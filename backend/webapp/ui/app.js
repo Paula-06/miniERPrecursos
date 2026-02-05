@@ -36,8 +36,7 @@ function clearAlert() {
   alertDiv.className = '';
 }
 
-
-// ==============================================================API HELPERS
+// =============================== API HELPERS
 
 //GET -- Obtiene los datos / Pide información al servidor --
 
@@ -53,7 +52,6 @@ async function apiGet(url) {
 
   return response.json();
 }
-
 
 // POST -- Envía información para crear algo nuevo --
 
@@ -72,6 +70,7 @@ async function apiGet(url) {
 
 //   return response.json();
 // }
+
 async function apiPost(url, data) {
   if (url === '/api/auth/login') {
     return new Promise((resolve, reject) => {
@@ -82,11 +81,10 @@ async function apiPost(url, data) {
       }, 500);
     });
   }
+
   console.log('Mock POST:', url, data);
   return { success: true };
 }
-
-
 
 // PUT -- Reemplaza o actualiza un recurso existente (normalmente completo) --
 
@@ -106,8 +104,8 @@ async function apiPut(url, data) {
   return response.json();
 }
 
-
 // DELETE -- Borra un recurso del servidor --
+
 async function apiDelete(url) {
   const response = await fetch(url, {
     method: 'DELETE',
@@ -122,9 +120,8 @@ async function apiDelete(url) {
   return true;
 }
 
-
-
 // MENU NAVIGATION -- Lateral --
+
 let currentView = 'loginView';
 
 buttons.forEach(button => {
@@ -132,7 +129,6 @@ buttons.forEach(button => {
     const view = button.dataset.view;
 
 // -- Si no inicias sesion no puedes hacer nada --
-
     if (!isLoggedIn && view !== 'loginView') {
       showAlert('Debes iniciar sesión primero');
       showView('loginView');
@@ -148,6 +144,7 @@ buttons.forEach(button => {
     showView(view);
     setActiveButton(button);
     currentView = view;
+
     // -- Si estas en alguna de estas vistas ves: --
     if (view === 'dashboardView') loadDashboard();
     if (view === 'employeesView') loadEmployees();
@@ -194,6 +191,7 @@ async function login() {
     setActiveButton(
       document.querySelector('[data-view="dashboardView"]')
     );
+
     // -- Marca error de Login --
   } catch (error) {
     console.error(error);
@@ -202,6 +200,7 @@ async function login() {
 }
 
 // ======================================= DASHBOARD (placeholder)
+
 //Variables
 const cardEmployees = document.getElementById('cardEmployees');
 const cardAssets = document.getElementById('cardAssets');
@@ -209,9 +208,7 @@ const cardAssignments = document.getElementById('cardAssignments');
 const cardAvailable = document.getElementById('cardActiveEmployees');
 const assetStateFilter = document.getElementById('assetStateFilter');
 
-
 // -- Funcionalidad de los botones para ir donde quieras --
-
     if (cardEmployees)
     cardEmployees.onclick = () =>
         document.querySelector('[data-view="employeesView"]').click();
@@ -253,6 +250,7 @@ async function loadDashboard() {
 }
 
 //================================================= Grafica
+
 // -- dibuja o actualiza el gráfico del dashboard sin errores ni duplicados --
 let dashboardChart = null;
 
