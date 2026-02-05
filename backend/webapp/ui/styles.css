@@ -1,0 +1,335 @@
+/*crea un contenedor flexible a pantalla completa */
+.container {
+    display: flex;         
+    min-height: 100vh;     
+}
+/*estiliza una barra lateral vertical */
+.sidebar {
+  width: 240px;
+  background-color: #2d3c4a;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* estilo y comportamiento visual a los botones del menú */
+.menu-btn {
+  padding: 16px 20px;
+  font-size: 17px;
+  border: none;
+  border-radius: 12px;
+  background-color: #3b4f63;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+/* marca visualmente el botón seleccionado */
+.menu-btn.active {
+  background-color: #5a7ca8;
+  font-weight: 600;
+}
+
+/* aplica efecto hover al botón del menú */
+.menu-btn:hover {
+  background-color: #4a6178;
+}
+/* muestra un título decorativo en la barra lateral */
+.sidebar::before {
+  content: "MENÚ";
+  color: #9fb3c8;
+  font-size: 13px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+/* define el área principal de contenido */
+.main-content {
+    flex: 1;              
+    padding: 20px;
+    background-color: #f4f6f8;
+    overflow-y: auto;
+}
+
+/* Vistas */
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+/*------------------------------------------------- Alert------------------------------- */
+#alert {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+  min-height: 20px;
+  font-size: 14px;
+}
+
+#alert.error {
+  color: #e74c3c;
+}
+
+#alert.success {
+  color: #27ae60;
+}
+/*------------------------------------------------------Login---------------------------------------*/
+
+/* estiliza y centra la caja de inicio de sesión */
+.login-box {
+    width: 320px;
+    margin: 100px auto; /* centrado vertical y horizontal */
+    padding: 30px 25px;
+    background-color: #f7f9fa;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}   
+
+/* da estilo al título del formulario de login */
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 150%;
+}
+
+/* estiliza las etiquetas del formulario de login */
+.login-box label {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #22272b;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/*da estilo y feedback visual a los inputs del login */
+.login-box input {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #bdc3c7;
+    margin-bottom: 15px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+/* resalta el input activo del login */
+.login-box input:focus {
+    border-color: #1abc9c;
+}
+
+/* da estilo al botón de inicio de sesión */
+.login-box button {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #368f7d;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+/*------------------------------------------------------Dashboard--------------------------------------------*/
+/* organiza y estiliza el contenedor de tarjetas */
+.cards {
+    display: grid;
+    gap: 20px;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* estiliza las tarjetas del dashboard */
+.card {
+    background-color: rgba(160, 158, 158, 0.543);
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 18px;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+/* añade un efecto hover a las tarjetas */
+.card:hover {
+  transform: translateY(-4px);
+}
+
+
+
+/*-----------------------------------------------------Empleados----------------------------------------------------*/
+/* alinea y separa los botones del formulario */
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 5%;
+}
+
+/* separa visualmente el buscador del contenido */
+.search-bar {
+  margin-bottom: 15px;
+}
+
+/* estiliza el campo de búsqueda */
+.search-bar input {
+  padding: 8px;
+  width: 250px;
+}
+
+/* estiliza el botón del buscador */
+.search-bar button {
+  padding: 8px 12px;
+}
+
+/* define la estructura básica de la tabla de empleados */
+#employeesTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+/* estiliza las celdas de la tabla de empleados */
+#employeesTable th,
+#employeesTable td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+/* resalta los encabezados de la tabla */
+#employeesTable th {
+  background-color: #34495e;
+  color: white;
+}
+
+/* define el tamaño y separación del formulario de empleados */
+.employee-form {
+  margin-top: 20px;
+  max-width: 400px;
+}
+
+/* estiliza los campos del formulario de empleados */
+.employee-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+
+
+/*--------------------------------------------Activos---------------------------------------*/
+
+#assetsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+}
+
+#assetsTable th,
+#assetsTable td {
+  border: 1px solid #afaeae;
+  padding: 10px;
+  text-align: left;
+  font-size: 16px;
+}
+
+#assetsTable th {
+  background-color: #305f8d;
+  color: white;
+  font-weight: 600;
+}
+
+.assets-form {
+  margin-top: 20px;
+  max-width: 400px;
+}
+
+.assets-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+
+#assetsFormTitle {
+    display: flex;
+    flex-direction: column;
+}
+
+/*-----------------------Asignaciones--------------------------------*/
+
+.Buscador {
+  margin-top: 2%;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+
+.Tabla2,
+.Tabla3 {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+}
+
+.Tabla2 th,
+.Tabla2 td,
+.Tabla3 th,
+.Tabla3 td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.Tabla2 th,
+.Tabla3 th {
+  background-color: #3e6a97;
+  color: white;
+  font-weight: 600;
+}
+
+.Tabla2 button,
+.Tabla3 button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.Tabla2 button {
+  background-color: #e74c3c; /* devolver */
+  color: white;
+}
+
+.Tabla3 button {
+  background-color: #27ae60; /* asignar */
+  color: white;
+}
+
+#AsignarEmployeeBtn{
+  margin-top: 30%;
+}
+
+.titleA {
+  margin-top: 10%;
+}

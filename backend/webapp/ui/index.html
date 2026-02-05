@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Proyecto - Asset Management UI</title>
+</head>
+<body>
+<div class="container">
+    <!--------------------------------------- Menú lateral ---------------------------------------------->
+    <nav class="sidebar">
+        <button class="menu-btn active" data-view="loginView">Login</button>
+        <button class="menu-btn" data-view="dashboardView">Dashboard</button>
+        <button class="menu-btn" data-view="employeesView">Empleados</button>
+        <button class="menu-btn" data-view="assetsView">Activos</button>
+        <button class="menu-btn" data-view="assignmentsView">Asignaciones</button>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+         <div id="alert"></div>
+        <!-- ---------------------------Login ---------------------------------->
+        <section data-view="loginView" class="view active">
+            <div class="login-box">
+                <!-- Mensajes de error / éxito -->
+                <h2>Iniciar Sesión</h2>
+
+                <label for="username">Usuario</label>
+                <input id="username" type="text" placeholder="Introducir usuario" required>
+
+                <label for="password">Contraseña</label>
+                <input id="password" type="password" placeholder="Introducir contraseña" required>
+
+                <button id="loginBtn">Iniciar Sesión</button>
+
+                    
+            </div>
+        </section>
+
+
+        <!-- ------------------------------------Dashboard-------------------------------------- -->
+        <section data-view="dashboardView" class="view">
+            <h2>Dashboard</h2>
+
+            <nav class="cards">
+                <button class="card" id="cardEmployees">Empleados: 0</button>
+                <button class="card" id="cardAssets">Activos: 0</button>
+                <button class="card" id="cardAssignments">Asignaciones: 0</button>
+                <button class="card" id="cardActiveEmployees">Disponibles: 0</button>
+            </nav>
+                
+            <canvas id="myChart" width="100" height="50"><b>    </b></canvas>
+        </section>
+
+
+        <!-- ------------------------------------------Empleados--------------------------------------- -->
+        <section data-view="employeesView" class="view">
+            <h2>Empleados</h2>
+            <!-- Buscar -->
+            <div class="search-bar">
+                <input id="employeeSearch" placeholder="Buscar Empleados">
+                <button id="searchEmployeeBtn">Buscar</button>
+            </div>
+
+            <table id="employeesTable">
+                <thead>
+                    <tr>
+                        <th>Nombre completo</th>
+                        <th>Email</th>
+                        <th>Departamento</th>
+                        <th>Activo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- filas dinámicas -->
+                </tbody>
+            </table>
+
+        <!-- FORMULARIO -->
+            <h3 id="employeeFormTitle">Nuevo empleado</h3>
+
+            <form id="employeeForm" class="employee-form">
+                <input id="employeeName" type="text" placeholder="Nombre" required>
+                <input id="employeeSurname" type="text" placeholder="Apellido" required>
+                <input id="employeeEmail" type="email" placeholder="Email" required>
+                <input id="employeeDepartment" type="text" placeholder="Departamento" required>
+
+                <label>
+                    <input type="checkbox" id="employeeActive" checked>
+                    Activo
+                </label>
+
+                <div class="form-buttons">
+                    <button type="submit">Guardar</button>
+                    <button type="button" id="cancelEmployeeBtn" style="display:none;">Cancelar</button>
+                </div>
+            </form>
+
+        </section>
+
+            <!-- ---------------------------------------Activos------------------------------------------- -->
+            <section data-view="assetsView" class="view">
+                <h2>Activos</h2>
+
+                <!-- Buscar -->
+            <div>
+                <!-- FILTRO POR ESTADO -->
+                <label for="assetStateFilter">Filtrar por estado:</label>
+                <select id="assetStateFilter">
+                    <option value="">Selecionar</option>
+                    <option value="all">Todos</option>
+                    <option value="EN_STOCK">EN_STOCK</option>
+                    <option value="ASIGNADO">ASIGNADO</option>
+                    <option value="BAJA">BAJA</option>
+                </select>
+            </div>
+
+            <table id="assetsTable">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Serial</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Filas se llenan desde JS -->
+                </tbody>
+            </table>
+
+            <!-- FORMULARIO -->
+            <h3 id="assetsFormTitle">Nuevo activo</h3>
+
+            <form id="assetsForm" class="assets-form">
+                <input id="assetType" type="text" placeholder="Tipo" required>
+                <input id="assetBrand" type="text" placeholder="Marca" required>
+                <input id="assetModel" type="text" placeholder="Modelo" required>
+                <input id="assetSerial" type="text" placeholder="Serie" required>
+                
+                <!-- Estado como select -->
+                <select id="assetState" required>
+                    <option value="" selected disabled>Selecionar</option>
+                    <option value="EN_STOCK">EN_STOCK</option>
+                    <option value="ASIGNADO">ASIGNADO</option>
+                    <option value="BAJA">BAJA</option>
+                </select>
+
+                <div class="form-buttons">
+                    <button type="submit">Guardar</button>
+                    <button type="button" id="cancelAssetBtn" style="display:none;">Cancelar</button>
+                </div>
+            </form>
+
+            </section>
+
+
+
+               <!-- ---------------------------Asignaciones ------------------------->
+            <section data-view="assignmentsView" class="view">
+                <h2>Asignaciones</h2>
+                    <!-- Estado como select -->
+                    <label for="empleadoSele">Selecionar Empleado:</label>
+                        <select id="empleadoSelect" required></select>
+                        <div class="Buscador">
+                         <!--   <input id="employeeSearchInput" placeholder="Buscar" disabled>-->
+                            <button id="searchEmployeeAssignmentsBtn">Buscar</button>
+                        </div>
+
+                <h2 class="titleA">Asignaciones activas: </h2>
+                    <table class="Tabla2">
+                     <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Activo</th>
+                                <th>Fecha Asigna</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                        <!-- Filas se llenan desde JS -->
+                    </tbody>
+                    </table>
+
+                <h2 class="titleA">Activos disponibles: </h2>
+                    <table class="Tabla3">
+                     <thead>
+                            <tr>
+                                <th>Activo</th>
+                                <th>Asignar</th>
+                            </tr>
+                        </thead>
+                    <tbody id="activosDisponiblesTbody">
+                        <!-- Filas se llenan desde JS -->
+                    </tbody>
+                    </table>
+                        <div class="Buscador">
+                            <button id="asignarSeleccionadosBtn">Asignar Seleccionado(s)</button>
+                        </div> 
+                
+            </section>
+
+</div>
+
+        <!---------------------------------- Script ------------------------------------->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="app.js"></script>
+    
+
+   
+</body>
+</html>
