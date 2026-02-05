@@ -252,43 +252,43 @@ async function loadDashboard() {
 //================================================= Grafica
 
 // -- dibuja o actualiza el gráfico del dashboard sin errores ni duplicados --
-let dashboardChart = null;
+// let dashboardChart = null;
 
-function renderDashboardChart(stats = {}) {
-  const ctx = document.getElementById('myChart');
-  if (!ctx) return;
+// function renderDashboardChart(stats = {}) {
+//   const ctx = document.getElementById('myChart');
+//   if (!ctx) return;
 
-  if (dashboardChart) dashboardChart.destroy();
+//   if (dashboardChart) dashboardChart.destroy();
 
-  const safeStats = {
-    employees: stats.employees ?? 0,
-    assets: stats.assets ?? 0,
-    assignedAssets: stats.assignedAssets ?? 0,
-    availableAssets: stats.availableAssets ?? 0
-  };
+//   const safeStats = {
+//     employees: stats.employees ?? 0,
+//     assets: stats.assets ?? 0,
+//     assignedAssets: stats.assignedAssets ?? 0,
+//     availableAssets: stats.availableAssets ?? 0
+//   };
 
-  dashboardChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: ['Empleados', 'Activos', 'Asignaciones', 'Disponibles'],
-      datasets: [{
-        label: 'Totales',
-        data: [
-          safeStats.employees,
-          safeStats.assets,
-          safeStats.assignedAssets,
-          safeStats.availableAssets
-        ],
-        backgroundColor: [
-            '#4CAF50', // Empleados
-            '#2196F3', // Activos
-            '#FFC107', // Asignaciones
-            '#c761c9'  // Disponibles
-        ],
-      }]
-    }
-  });
-}
+//   dashboardChart = new Chart(ctx, {
+//     type: 'pie',
+//     data: {
+//       labels: ['Empleados', 'Activos', 'Asignaciones', 'Disponibles'],
+//       datasets: [{
+//         label: 'Totales',
+//         data: [
+//           safeStats.employees,
+//           safeStats.assets,
+//           safeStats.assignedAssets,
+//           safeStats.availableAssets
+//         ],
+//         backgroundColor: [
+//             '#4CAF50', // Empleados
+//             '#2196F3', // Activos
+//             '#FFC107', // Asignaciones
+//             '#c761c9'  // Disponibles
+//         ],
+//       }]
+//     }
+//   });
+//}
 
 
 
